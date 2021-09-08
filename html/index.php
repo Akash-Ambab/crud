@@ -12,10 +12,10 @@
 
   <form class="form-inline m-2 d-flex justify-content-center" action="create.php" method="POST">
     <label for="name">Name:</label>
-    <input type="text" class="form-control m-2" id="name" name="name">
+    <input type="text" class="form-control m-2" id="name" name="name" required>
     <label for="des">Designation:</label>
-    <input type="text" class="form-control m-2" id="des" name="des">
-    <button type="submit" class="btn btn-primary">Add</button>
+    <input type="text" class="form-control m-2" id="des" name="des" required>
+    <button type="submit" class="btn btn-warning">Add</button>
   </form>
 
   <table class="table text-center">
