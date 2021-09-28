@@ -1,53 +1,39 @@
 <?php
+  $start = 1;
 
-try {
+  if(isset($_POST['pageNo'])) {
+    $start = $_POST['pageNo'];
+  }
+
+  try {
     $pages = $obj -> getPages(5);
   }
   catch (Exception $e) {
     echo $e -> getMessage();
   }
 
-  $start = 1;
-
-  if(isset($_GET['page'])) {
-    $start = $_GET['page'];
-  }
-
   for($page = 1; $page <= $pages; $page++) {
 
     if($page == $start) {
-      echo "<a class='active m-2' href='index.php?page=$page'>$page</a>";
+      echo "<button class='active m-2' onclick=goToPage($page)>$page</button>";
     }
     else {
-      echo "<a class='m-2' href='index.php?page=$page'>$page</a>";
+      echo "<button class='m-2' onclick=goToPage($page)>$page</button>";
     }
   }
-  
-  
+?>
 
-
-
-
-// <!-- <script>
-// $(document).ready(function() {
-// $("#target-content").load("pagination.php?page=1");
-// $(".page-link").click(function(){
-// var id = $(this).attr("data-id");
-// var select_id = $(this).parent().attr("id");
-// $.ajax({
-// url: "pagination.php",
-// type: "GET",
-// data: {
-// page : id
-// },
-// cache: false,
-// success: function(dataResult){
-// $("#target-content").html(dataResult);
-// $(".pageitem").removeClass("active");
-// $("#"+select_id).addClass("active");
-
-// }
-// });
-// });
-// });
-// </script> -->
+<script>
+  function goToPage(pageNo) {
+    $.ajax({
+      url: "read.php",
+      type: "POST",
+      data: {pageNo : pageNo},
+      success: function(result) {
+        $("table").html("");
+        $(".pagination").html("");
+        $("table").html(result);
+      }
+    })
+  }
+</script>

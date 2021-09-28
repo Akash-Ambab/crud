@@ -7,15 +7,7 @@
 <body>
 
 <?php
-
-  require_once './backend/UsersClass.php';
-  try{
-    $obj = new UsersClass();
-  }
-  catch(Exception $e){
-    echo $e->getMessage();
-  }
-
+  require_once './backend/Object.php';
 ?>
 
 <div class="container">
@@ -32,26 +24,12 @@
   </form>
 
   <?php require_once "create.php"; ?>
-
-  <p>1 of 100 pages</p>
-
-  <table class="table">
-    <thead>
-      <th>No.</th>
-      <th>Name</th>
-      <th>Designation</th>
-      <th>Actions</th>
-    </thead>
-    <tbody>
-      <?php require_once "read.php"; ?>
-    </tbody>
-  </table>
-
-  <div class="pagination">
-    <?php require_once "pagination.php"; ?>
-  </div>
-
+  <?php require_once "read.php"; ?>
+    
+  
 </div>
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="backend/script.js"></script>
