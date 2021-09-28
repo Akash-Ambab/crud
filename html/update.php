@@ -1,12 +1,25 @@
 <?php
 
-include '../db.php';
-$name = $_POST['name'];
-$des = $_POST['des'];
-$id = $_POST['id'];
+if(isset($_GET['submit'])) {
+    $name = $_POST['name'];
+    $designation = $_POST['des'];
+    $id = $_POST['id'];
+    $page = $_GET['page'];
 
-$query = "update users set name = '$name', designation = '$des' where id = '$id'";
-$conn->query($query);
-$conn->close();
-header("location: index.php");
+    $data = [
+        "name" => $name,
+        "designation" => $designation
+    ];
+
+    try {
+      $result = $obj -> updateData($id, $data);
+
+      if($result) {
+        header("location: index.php?page=$page");
+      }
+    }
+    catch (Exception $e) {
+        echo $e -> getMessage();
+    }
+  }
 ?>

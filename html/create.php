@@ -1,11 +1,14 @@
 <?php
 
-include '../db.php';
-$name = $_POST['name'];
-$des = $_POST['des'];
+if(isset($_POST['submit'])) {
+    $name = $_POST['name'];
+    $designation = $_POST['des'];
 
-$query = "insert into users (name, designation) values ('$name', '$des')";
-$conn->query($query);
-$conn->close();
-header("location: index.php");
+    try {
+        $obj -> saveUser($name, $designation);
+    }
+    catch(Exception $e) {
+        echo $e -> getMessage();
+    }
+}
 ?>
