@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -26,12 +27,11 @@
   <?php require_once "create.php"; ?>
   <?php require_once "read.php"; ?>
     
-  
+  <h3 class="text-center" id="msg"></h3>
 </div>
 
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="backend/script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

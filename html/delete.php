@@ -1,20 +1,18 @@
 <?php
 
-$id = $_GET['id'];
+require_once './backend/Object.php';
+
+$id = $_POST['id'];
+$pageNo = $_POST['pageNo'];
 
 try {
-    $result = $obj -> deleteData($id);
+  $result = $obj -> deleteData($id);
 
-    if($result) {
-      header("location: index.php?page=$page");
-    }
+  if($result) {
+    echo "Deleted";
   }
-  catch (Exception $e) {
-      echo $e -> getMessage();
-  }
-
-$query = "delete from users where id = '$id'";
-$conn->query($query);
-$conn->close();
-header("location: index.php");
+}
+catch (Exception $e) {
+    echo $e -> getMessage();
+}
 ?>

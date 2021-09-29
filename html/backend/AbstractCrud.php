@@ -69,6 +69,8 @@ abstract class AbstractCrud {
     public function delete($tableName, $id) {
         $query = "DELETE FROM $tableName where id = '$id'";
         $result = $this -> connection -> query($query);
+
+        return $result;
     }
 
 

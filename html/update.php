@@ -1,25 +1,23 @@
 <?php
+  require_once './backend/Object.php';
 
-if(isset($_GET['submit'])) {
-    $name = $_POST['name'];
-    $designation = $_POST['des'];
-    $id = $_POST['id'];
-    $page = $_GET['page'];
+  $name = $_POST['name'];
+  $designation = $_POST['designation'];
+  $id = $_POST['updateid'];
+  
+  $data = [
+      "name" => $name,
+      "designation" => $designation
+  ];
 
-    $data = [
-        "name" => $name,
-        "designation" => $designation
-    ];
+  try {
+    $result = $obj -> updateData($id, $data);
 
-    try {
-      $result = $obj -> updateData($id, $data);
-
-      if($result) {
-        header("location: index.php?page=$page");
-      }
+    if($result) {
+      echo "success";
     }
-    catch (Exception $e) {
-        echo $e -> getMessage();
-    }
+  }
+  catch (Exception $e) {
+      echo $e -> getMessage();
   }
 ?>
